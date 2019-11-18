@@ -24,11 +24,11 @@
                 <h1>Biblia</h1>
             </div>
         </div>
+        <div class="divider"></div>
 
 
-
-        <div class="row center-xs">
-            <div class="col-xs-11 col-sm-3 center-xs">
+        <div class="row start-sm center-xs">
+            <div class="col-xs-11 col-sm-3 col-sm-offset-1 center-xs">
                 <div class="form-group">
                       <select onchange="changeLibro(event)" id="libros" class="form-select">
                       </select>
@@ -39,8 +39,7 @@
                 </div>
             </div>
         </div>
-
-
+        <div class="divider"></div>
         <div class="row center-xs">
             <div class="col-xs-11 col-sm-10 start-xs" id="content">
                     
@@ -75,7 +74,6 @@ m.request({
     url: "libros.json",
 })
 .then(function(data) {
-    data.unshift({val:"",text:"Escoge un Libro"});
     m.render(libros,data.map((_d)=>{
         return m("option",{value:_d.val},_d.text)
    }));
@@ -133,8 +131,7 @@ var Biblia = {
 }
 
 
-m.route(content, "/", {
-     "/": Splash,
+m.route(content, "/genesis/1", {
     "/:libro/:capitulo": Biblia
 })
 

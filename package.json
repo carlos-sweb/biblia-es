@@ -1,0 +1,28 @@
+{
+  "name": "biblia",
+  "version": "1.0.0",
+  "description": "Bliblia en español",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos-sweb/biblia-es.git"
+  },
+  "keywords": [
+    "biblia"
+  ],
+  "author": "Carlos Illesca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlos-sweb/biblia-es/issues"
+  },
+  "homepage": "https://github.com/carlos-sweb/biblia-es#readme",
+  "dependencies": {
+    "@material/elevation": "^4.0.0",
+    "flexboxgrid": "^6.3.1",
+    "mithril": "^2.0.4",
+    "spectre.css": "^0.5.8"
+  }
+}

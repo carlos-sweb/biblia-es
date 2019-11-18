@@ -23,6 +23,7 @@
     "@material/elevation": "^4.0.0",
     "flexboxgrid": "^6.3.1",
     "mithril": "^2.0.4",
-    "spectre.css": "^0.5.8"
+    "spectre.css": "^0.5.8",
+    "underscore": "^1.9.1"
   }
 }

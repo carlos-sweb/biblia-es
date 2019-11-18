@@ -30,19 +30,11 @@
         <div class="row center-xs">
             <div class="col-xs-11 col-sm-3 center-xs">
                 <div class="form-group">
-                      <select class="form-select">
-                        <option>Choose an option</option>
-                        <option>Slack</option>
-                        <option>Skype</option>
-                        <option>Hipchat</option>
+                      <select onchange="changeLibro(event)" id="libros" class="form-select">
                       </select>
                 </div>
                     <div class="form-group">
-                      <select class="form-select">
-                        <option>Choose an option</option>
-                        <option>Slack</option>
-                        <option>Skype</option>
-                        <option>Hipchat</option>
+                      <select id="capitulos" class="form-select" >
                       </select>
                 </div>
             </div>
@@ -50,7 +42,7 @@
 
 
         <div class="row center-xs">
-            <div class="col-xs-11 col-sm-10" id="content">
+            <div class="col-xs-11 col-sm-10 start-xs" id="content">
                     
             </div>
         </div>
@@ -62,27 +54,88 @@
 
 
 <script src="node_modules/mithril/mithril.min.js"></script>
+<script src="node_modules/underscore/underscore-min.js"></script>
 
-    <script>
-    var root = document.body
-    var content = document.getElementById("content");
+<script>
+ 
+var root = document.body
+var content = document.getElementById("content");
+var libros = document.getElementById("libros");
+
+
+function changeLibro( event ){
+
+
+    console.log( event.target.value );
+
+}
+
+m.request({
+    method: "GET",
+    url: "libros.json",
+})
+.then(function(data) {
+    data.unshift({val:"",text:"Escoge un Libro"});
+    m.render(libros,data.map((_d)=>{
+        return m("option",{value:_d.val},_d.text)
+   }));
+})
+
+
+
+
+var Data = {
+    todos: {
+        capitulos: [],
+        fetch: function() {
+            m.request({
+                method: "GET",
+                url: "json/genesis.json",
+            })
+            .then(function(data){
+                Data.todos.capitulos = data
+            })
+        }
+    }
+}
+
+
 
 var Splash = {
     view: function() {
-        return m("a", {href: "#!/genesis/12"}, "Enter!")
+        return m("a", {href: "#!/genesis/12"}, m.router, )
     }
 }
 
 var Biblia = {
-    view: function(vnode) {
-        return m("div","");
+     oninit: Data.todos.fetch,
+    view: function(vnode){
+
+        const libro = vnode.attrs.libro || "genesis" ;
+        const capitulo = vnode.attrs.capitulo || "1" ;
+
+        console.log(vnode.attrs.libro);
+        console.log()
+
+        console.log(Data.todos.capitulos);
+
+
+    
+        return _.map(Data.todos.capitulos[capitulo],function(cap,iterator){
+            
+            return m("div",{class:"a"},[m("strong",iterator),m("p",cap)])
+        })
+
+
+       
+
     }
 }
 
 
 m.route(content, "/", {
      "/": Splash,
-    "/:libro/:capitulo": Biblia,
+    "/:libro/:capitulo": Biblia
 })
 
 

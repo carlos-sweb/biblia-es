@@ -1,0 +1,266 @@
+[
+ {
+  "val": "genesis",
+  "text": "Génesis"
+ },
+ {
+  "val": "exodo",
+  "text": "Éxodo"
+ },
+ {
+  "val": "levitico",
+  "text": "Levítico"
+ },
+ {
+  "val": "numeros",
+  "text": "Números"
+ },
+ {
+  "val": "deuteronomio",
+  "text": "Deuteronomio"
+ },
+ {
+  "val": "josue",
+  "text": "Josué"
+ },
+ {
+  "val": "jueces",
+  "text": "Jueces"
+ },
+ {
+  "val": "rut",
+  "text": "Rut"
+ },
+ {
+  "val": "1samuel",
+  "text": "1 Samuel"
+ },
+ {
+  "val": "2samuel",
+  "text": "2 Samuel"
+ },
+ {
+  "val": "1reyes",
+  "text": "1 Reyes"
+ },
+ {
+  "val": "2reyes",
+  "text": "2 Reyes"
+ },
+ {
+  "val": "1cronicas",
+  "text": "1 Crónicas"
+ },
+ {
+  "val": "2cronicas",
+  "text": "2 Crónicas"
+ },
+ {
+  "val": "esdras",
+  "text": "Esdras"
+ },
+ {
+  "val": "nehemias",
+  "text": "Nehemías"
+ },
+ {
+  "val": "ester",
+  "text": "Ester"
+ },
+ {
+  "val": "job",
+  "text": "Job"
+ },
+ {
+  "val": "salmos",
+  "text": "Salmos"
+ },
+ {
+  "val": "proverbios",
+  "text": "Proverbios"
+ },
+ {
+  "val": "eclesiastes",
+  "text": "Eclesiastés"
+ },
+ {
+  "val": "cantares",
+  "text": "Cantares"
+ },
+ {
+  "val": "isaias",
+  "text": "Isaías"
+ },
+ {
+  "val": "jeremias",
+  "text": "Jeremías"
+ },
+ {
+  "val": "lamentaciones",
+  "text": "Lamentaciones"
+ },
+ {
+  "val": "ezequiel",
+  "text": "Ezequiel"
+ },
+ {
+  "val": "daniel",
+  "text": "Daniel"
+ },
+ {
+  "val": "oseas",
+  "text": "Oseas"
+ },
+ {
+  "val": "joel",
+  "text": "Joel"
+ },
+ {
+  "val": "amos",
+  "text": "Amós"
+ },
+ {
+  "val": "abdias",
+  "text": "Abdías"
+ },
+ {
+  "val": "jonas",
+  "text": "Jonás"
+ },
+ {
+  "val": "miqueas",
+  "text": "Miqueas"
+ },
+ {
+  "val": "nahum",
+  "text": "Nahum"
+ },
+ {
+  "val": "habacuc",
+  "text": "Habacuc"
+ },
+ {
+  "val": "sofonias",
+  "text": "Sofonías"
+ },
+ {
+  "val": "hageo",
+  "text": "Hageo"
+ },
+ {
+  "val": "zacarias",
+  "text": "Zacarías"
+ },
+ {
+  "val": "malaquias",
+  "text": "Malaquías"
+ },
+ {
+  "val": "mateo",
+  "text": "Mateo"
+ },
+ {
+  "val": "marcos",
+  "text": "Marcos"
+ },
+ {
+  "val": "lucas",
+  "text": "Lucas"
+ },
+ {
+  "val": "juan",
+  "text": "Juan"
+ },
+ {
+  "val": "hechos",
+  "text": "Hechos"
+ },
+ {
+  "val": "romanos",
+  "text": "Romanos"
+ },
+ {
+  "val": "1corintios",
+  "text": "1 Corintios"
+ },
+ {
+  "val": "2corintios",
+  "text": "2 Corintios"
+ },
+ {
+  "val": "galatas",
+  "text": "Gálatas"
+ },
+ {
+  "val": "efesios",
+  "text": "Efesios"
+ },
+ {
+  "val": "filipenses",
+  "text": "Filipenses"
+ },
+ {
+  "val": "colosenses",
+  "text": "Colosenses"
+ },
+ {
+  "val": "1tesalonicenses",
+  "text": "1 Tesalonicenses"
+ },
+ {
+  "val": "2tesalonicenses",
+  "text": "2 Tesalonicenses"
+ },
+ {
+  "val": "1timoteo",
+  "text": "1 Timoteo"
+ },
+ {
+  "val": "2timoteo",
+  "text": "2 Timoteo"
+ },
+ {
+  "val": "tito",
+  "text": "Tito"
+ },
+ {
+  "val": "filemon",
+  "text": "Filemón"
+ },
+ {
+  "val": "hebreos",
+  "text": "Hebreos"
+ },
+ {
+  "val": "santiago",
+  "text": "Santiago"
+ },
+ {
+  "val": "1pedro",
+  "text": "1 Pedro"
+ },
+ {
+  "val": "2pedro",
+  "text": "2 Pedro"
+ },
+ {
+  "val": "1juan",
+  "text": "1 Juan"
+ },
+ {
+  "val": "2juan",
+  "text": "2 Juan"
+ },
+ {
+  "val": "3juan",
+  "text": "3 Juan"
+ },
+ {
+  "val": "judas",
+  "text": "Judas"
+ },
+ {
+  "val": "apocalipsis",
+  "text": "Apocalipsis"
+ }
+]

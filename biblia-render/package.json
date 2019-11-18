@@ -1,0 +1,16 @@
+{
+  "name": "biblia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-beautify": "^1.1.1",
+    "underscore": "^1.9.1",
+    "voca": "^1.4.0"
+  }
+}

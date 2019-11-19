@@ -21,9 +21,12 @@
   "homepage": "https://github.com/carlos-sweb/biblia-es#readme",
   "dependencies": {
     "@material/elevation": "^4.0.0",
+    "animate.css": "^3.7.2",
     "flexboxgrid": "^6.3.1",
     "mithril": "^2.0.4",
+    "requirejs": "^2.3.6",
     "spectre.css": "^0.5.8",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "voca": "^1.4.0"
   }
 }

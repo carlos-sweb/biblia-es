@@ -9,6 +9,7 @@
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, shrink-to-fit=no,maximum-scale=1.0, user-scalable=0' />
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
     <link rel="stylesheet" href="node_modules/spectre.css/dist/spectre.min.css">
     <link rel="stylesheet" href="node_modules/spectre.css/dist/spectre-exp.min.css">
     <link rel="stylesheet" href="node_modules/spectre.css/dist/spectre-icons.min.css">
@@ -19,7 +20,7 @@
   <body>
    
 
-        <div class="row">
+        <div class="row animated fadeIn">
             <div class="col-xs-12 center-xs">
                 <h1>Biblia</h1>
             </div>
@@ -27,7 +28,7 @@
         <div class="divider"></div>
 
 
-        <div class="row start-sm center-xs">
+        <div class="row start-sm center-xs animated fadeIn">
             <div class="col-xs-11 col-sm-3 col-sm-offset-1 center-xs">
                 <div class="form-group">
                       <select onchange="changeLibro(event)" id="libros" class="form-select">
@@ -41,99 +42,107 @@
         </div>
         <div class="divider"></div>
         <div class="row center-xs">
-            <div class="col-xs-11 col-sm-10 start-xs" id="content">
+            <div class="col-xs-12 start-xs animated fadeIn" id="content">
                     
             </div>
         </div>
 
 
-
-
-        <!-- form select control -->
-
-
 <script src="node_modules/mithril/mithril.min.js"></script>
 <script src="node_modules/underscore/underscore-min.js"></script>
-
+<script src="node_modules/voca/index.js" ></script>
 <script>
  
-var root = document.body
-var content = document.getElementById("content");
-var libros = document.getElementById("libros");
+    var root    = document.body
+    var content = document.getElementById("content");
+    var libros  = document.getElementById("libros");
 
 
-function changeLibro( event ){
+    function changeLibro( event ){
+        m.route.set('/:libro/:capitulos', {capitulos: 1,libro:event.target.value})
+    }
 
 
-    console.log( event.target.value );
+    async function f() {
 
+  let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("done!"), 1000)
+  });
+
+  let result = await promise; // wait until the promise resolves (*)
+
+  alert(result); // "done!"
 }
 
-m.request({
-    method: "GET",
-    url: "libros.json",
-})
-.then(function(data) {
-    m.render(libros,data.map((_d)=>{
-        return m("option",{value:_d.val},_d.text)
-   }));
-})
+f();
+
+
+
+  
+    
 
 
 
 
-var Data = {
-    todos: {
-        capitulos: [],
-        fetch: function() {
-            m.request({
-                method: "GET",
-                url: "json/genesis.json",
-            })
-            .then(function(data){
-                Data.todos.capitulos = data
-            })
+    m.request({
+        method: "GET",
+        url: "libros.json",
+    })
+    .then(function(data) {
+        m.render(libros,data.map((_d)=>{
+            return m("option",{value:_d.val},_d.text)
+       }));
+    })
+
+
+
+
+    var Data = {
+        todos: {
+            capitulos: [],
+            fetch:function(libro) {
+
+                console.log(  m.route.get() );
+                
+                m.request({
+                    method: "GET",
+                    url: "json/genesis.json",
+                })
+                .then(function(data){
+                    Data.todos.capitulos = data
+                })
+            }
         }
     }
-}
 
 
 
-var Splash = {
-    view: function() {
-        return m("a", {href: "#!/genesis/12"}, m.router, )
+    var Splash = {
+        view: function() {
+            return m("a", {href: "#!/genesis/12"}, m.router, )
+        }
     }
-}
 
-var Biblia = {
-     oninit: Data.todos.fetch,
-    view: function(vnode){
-
-        const libro = vnode.attrs.libro || "genesis" ;
-        const capitulo = vnode.attrs.capitulo || "1" ;
-
-        console.log(vnode.attrs.libro);
-        console.log()
-
-        console.log(Data.todos.capitulos);
+    var Biblia = {
+        oninit: Data.todos.fetch,
+        view: function(vnode){
 
 
-    
-        return _.map(Data.todos.capitulos[capitulo],function(cap,iterator){
-            
-            return m("div",{class:"a"},[m("strong",iterator),m("p",cap)])
-        })
+            const libro = vnode.attrs.libro || "genesis" ;
+            const capitulo = vnode.attrs.capitulo || "1" ;
+        
+            return _.map(Data.todos.capitulos[capitulo],function(cap,iterator){      
+                return [m("div",{class:"col-xs-10 col-xs-offset-1"},[m("strong",iterator),m("p",cap)]),m("div",{class:"divider"})]
+            });
+           
 
-
-       
-
+        }
     }
-}
 
 
-m.route(content, "/genesis/1", {
-    "/:libro/:capitulo": Biblia
-})
+    m.route(content, "/genesis/1", {
+        "/:libro/:capitulo": Biblia
+    })
 
 
     // your code goes here!

@@ -1,16 +1,9 @@
 define(
-['json!libros.json','mithril'],
-function(libros,mithril){
-	
-	console.log(m)
+['json!libros.json'],
+function(libros){
 	
 	return {
-		 libros:libros, e_libros:document.getElementById("libros"),
-		 m_libros:libros.map((l)=>{
-		 	 return mithril("option",{
-		 	 	value:l.val
-		 	 },l.text);
-		 })
+		 libros:libros, e_libros:document.getElementById("libros")
 	};
 	
 });

@@ -51,7 +51,21 @@
 <script src="node_modules/mithril/mithril.min.js"></script>
 <script src="node_modules/underscore/underscore-min.js"></script>
 <script src="node_modules/requirejs/require.js" data-main="js/main"></script>
+<script>
+require(["init","zepto"],
+function(init,$){      
 
+  // console.log($("body").html())
+   
+   m.render(
+   init.e_libros,
+   _.map(init.libros,(l)=>{	  
+   	  return m("option",
+   	  { value:l.val },l.text);
+   	}))
+  
+	})
+</script>
 
 <script>
 

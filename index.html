@@ -50,12 +50,13 @@
 
 <script src="node_modules/mithril/mithril.min.js"></script>
 <script src="node_modules/underscore/underscore-min.js"></script>
-<script src="node_modules/voca/index.js" ></script>
+<script src="node_modules/requirejs/require.js" data-main="js/main"></script>
+
+
 <script>
- 
+
     var root    = document.body
     var content = document.getElementById("content");
-    var libros  = document.getElementById("libros");
 
 
     function changeLibro( event ){
@@ -63,36 +64,7 @@
     }
 
 
-    async function f() {
 
-  let promise = new Promise((resolve, reject) => {
-    setTimeout(() => resolve("done!"), 1000)
-  });
-
-  let result = await promise; // wait until the promise resolves (*)
-
-  alert(result); // "done!"
-}
-
-f();
-
-
-
-  
-    
-
-
-
-
-    m.request({
-        method: "GET",
-        url: "libros.json",
-    })
-    .then(function(data) {
-        m.render(libros,data.map((_d)=>{
-            return m("option",{value:_d.val},_d.text)
-       }));
-    })
 
 
 
@@ -101,8 +73,6 @@ f();
         todos: {
             capitulos: [],
             fetch:function(libro) {
-
-                console.log(  m.route.get() );
                 
                 m.request({
                     method: "GET",
@@ -112,16 +82,8 @@ f();
                     Data.todos.capitulos = data
                 })
             }
-        }
-    }
-
-
-
-    var Splash = {
-        view: function() {
-            return m("a", {href: "#!/genesis/12"}, m.router, )
-        }
-    }
+        }}
+    
 
     var Biblia = {
         oninit: Data.todos.fetch,

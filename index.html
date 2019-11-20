@@ -31,11 +31,13 @@
         <div class="row start-sm center-xs animated fadeIn">
             <div class="col-xs-11 col-sm-3 col-sm-offset-1 center-xs">
                 <div class="form-group">
-                      <select onchange="changeLibro(event)" id="libros" class="form-select">
+                      <select  id="libros" class="form-select">
                       </select>
                 </div>
                     <div class="form-group">
                       <select id="capitulos" class="form-select" >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
                       </select>
                 </div>
             </div>
@@ -52,71 +54,16 @@
 <script src="node_modules/underscore/underscore-min.js"></script>
 <script src="node_modules/requirejs/require.js" data-main="js/main"></script>
 <script>
-require(["init","zepto"],
-function(init,$){      
-   
-   m.render(
-   init.e_libros,
-   _.map(init.libros,(l)=>{	  
-   	  return m("option",
-   	  { value:l.val },l.text);
-   	}))
-  
-	})
+
 </script>
 
 <script>
-
-    var root    = document.body
-    var content = document.getElementById("content");
-
-
-    function changeLibro( event ){
-        m.route.set('/:libro/:capitulos', {capitulos: 1,libro:event.target.value})
-    }
-
-
-
-
-
-
-
-    var Data = {
-        todos: {
-            capitulos: [],
-            fetch:function(libro) {
-                
-                m.request({
-                    method: "GET",
-                    url: "json/genesis.json",
-                })
-                .then(function(data){
-                    Data.todos.capitulos = data
-                })
-            }
-        }}
     
 
-    var Biblia = {
-        oninit: Data.todos.fetch,
-        view: function(vnode){
+    
 
 
-            const libro = vnode.attrs.libro || "genesis" ;
-            const capitulo = vnode.attrs.capitulo || "1" ;
-        
-            return _.map(Data.todos.capitulos[capitulo],function(cap,iterator){      
-                return [m("div",{class:"col-xs-10 col-xs-offset-1"},[m("strong",iterator),m("p",cap)]),m("div",{class:"divider"})]
-            });
-           
-
-        }
-    }
-
-
-    m.route(content, "/genesis/1", {
-        "/:libro/:capitulo": Biblia
-    })
+ 
 
 
     // your code goes here!

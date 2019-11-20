@@ -18,24 +18,15 @@
     <title>Bliblia -Es</title>
   </head>
   <body>
-   
-
-        <div class="row animated fadeIn">
-            <div class="col-xs-12 center-xs">
-                <h1>Biblia</h1>
-            </div>
-        </div>
-        <div class="divider"></div>
-
-
-        <div class="row start-sm center-xs animated fadeIn">
+  	<div class="divider"></div>
+  <div class="row start-sm center-xs animated fadeIn">
             <div class="col-xs-11 col-sm-3 col-sm-offset-1 center-xs">
                 <div class="form-group">
                       <select  id="libros" class="form-select">
                       </select>
                 </div>
                     <div class="form-group">
-                      <select id="capitulos" class="form-select" >
+                      <select id="capitulo" class="form-select" >
                             <option value="1">1</option>
                             <option value="2">2</option>
                       </select>
@@ -45,29 +36,24 @@
         <div class="divider"></div>
         <div class="row center-xs">
             <div class="col-xs-12 start-xs animated fadeIn" id="content">
-                    
+                  
             </div>
         </div>
+        <!--seccion de pagination-->
+        <div class="row">
+        	  <div class="col-xs start-xs">
+        	  	 <button class="btn btn-primary btn-lg"><i class="icon 
+icon-arrow-left"></i></button>
+        	  </div>
+        	  <div class="col-xs end-xs">
+        	  	 <button class="btn btn-primary btn-lg"><i class="icon 
+icon-arrow-right"></i></button>
+        	  </div>
+        </div>
+        <!--seccion de pagination-->
 
 
 <script src="node_modules/mithril/mithril.min.js"></script>
-<script src="node_modules/underscore/underscore-min.js"></script>
-<script src="node_modules/requirejs/require.js" data-main="js/main"></script>
-<script>
-
-</script>
-
-<script>
-    
-
-    
-
-
- 
-
-
-    // your code goes here!
-    </script>
-      
-  </body>
-  </html>
+<script src="node_modules/requirejs/require.js" data-main="js/main"></script>  
+</body>
+</html>

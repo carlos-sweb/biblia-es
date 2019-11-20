@@ -62,6 +62,7 @@ function(init,$){
                         this._content = result;
                         this.libro = libro;
                       });
+                      return m("div",{class:"loading loading-lg"})
               }else{
                     //alert("render");
                     return _.map(this._content[capitulo],function(cap,iterator){      

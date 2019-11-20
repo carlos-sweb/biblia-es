@@ -56,13 +56,14 @@ function(init,$){
             const capitulo = vnode.attrs.capitulo || "1" ;
             if( this._content != null ){
               if( this.libro != libro ){
-                      alert("no render");
+                      //alert("no render");
+                      
                       Data.fetch(vnode.attrs.libro).then((result)=>{
                         this._content = result;
                         this.libro = libro;
                       });
               }else{
-                    alert("render");
+                    //alert("render");
                     return _.map(this._content[capitulo],function(cap,iterator){      
                           return [m("div",{class:"col-xs-10 col-xs-offset-1"},[m("strong",iterator),m("p",cap)]),m("div",{class:"divider"})]
                     });

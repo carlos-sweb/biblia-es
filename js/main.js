@@ -21,7 +21,10 @@ require.config({
   	   backbone:{
   	   	  exports: 'Backbone' ,
           deps:["jquery","underscore"]
-  	   }
+  	   },
+       init:{
+         deps:['backbone']
+       }
   }
 });
 
@@ -29,22 +32,9 @@ require.config({
 require(["jquery","backbone","underscore","init"],function($,Backbone,_,init){
 
 
-    var AppRouter = Backbone.Router.extend({
-        routes: {
-            ':libro/:capitulo': 'index',
-            '*noFound':'noFound'
-        },
-        index:function(libro,capitulo){
-          
-          console.log()
-          
-        },
-        noFound:function(){
-             this.navigate("#/genesis/1",{trigger:true})
-        }
-    });
 
-    new AppRouter();
+
+    new init.AppRouter();
 
     Backbone.history.start()
  

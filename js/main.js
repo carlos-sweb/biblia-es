@@ -7,7 +7,8 @@ require.config({
     voca:"node_modules/voca/index",
     mithril:"node_modules/mithril/index",
     zepto:"node_modules/zepto/dist/zepto.min",
-    init:"js/init"	
+    init:"js/init",
+    backbone:"node_modules/backbone/backbone-min.js"
   },
   shim:{
   				init:{
@@ -22,6 +23,9 @@ require.config({
   	   underscore: { 
   	     exports: '_'
   	   },
+  	   backbone:{
+  	   	  exports: 'Backbone'
+  	   }
   }
 });
 
@@ -112,19 +116,6 @@ function(init,$){
     }
 
     
-
- 
- /*cambio de capitulo*/
- 
-   
-  /*renderizando*/
-/* m.render(
-   init.e_libros,
-   _.map(init.libros,(l)=>{   
-      return m("option",
-      { value:l.val },l.text);
-   }))*/
-  /*renderizando*/
   /*Router para la biblia*/
   m.route(document.body,
       "/genesis/1",{

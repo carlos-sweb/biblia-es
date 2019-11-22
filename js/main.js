@@ -26,17 +26,18 @@ require.config({
 });
 
 
+require(["jquery","backbone","underscore","init"],function($,Backbone,_,init){
 
-
-require(["jquery","backbone","underscore"],function($,Backbone,_){
 
     var AppRouter = Backbone.Router.extend({
         routes: {
             ':libro/:capitulo': 'index',
             '*noFound':'noFound'
         },
-        index:function(){
-          alert("hola");
+        index:function(libro,capitulo){
+          
+          console.log()
+          
         },
         noFound:function(){
              this.navigate("#/genesis/1",{trigger:true})
@@ -48,6 +49,3 @@ require(["jquery","backbone","underscore"],function($,Backbone,_){
     Backbone.history.start()
  
 });
-
-
-

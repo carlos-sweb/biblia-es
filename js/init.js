@@ -3,10 +3,7 @@ define(
 function(libros){
 	
 	return {
-		libros:libros,
-		e_libros:
-document.getElementById(
-"libros")
+		libros:libros
 	};
 	
 });

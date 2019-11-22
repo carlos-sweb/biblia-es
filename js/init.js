@@ -12,28 +12,35 @@ function(libros,Backbone,_,$){
 		var nBook = new Book();
 
 		var mContent = Backbone.Model.extend({
-			initialize:function(options){
-				const libro = options.libro || "genesis";
+			run:function(libro){
 				this.url = "json/"+libro+".json";
-			},
-			defaults:{
-				content:null
-			} 
+				this.fetch();	
+			}
 		});
-
 
 		var vContent = Backbone.View.extend({
 			el:"#content",
-			template:_.template(`<h1>Hola a todos</h1>`),
-			initialize:function(){
-				this.model.fetch().then((data)=>{
-						console.log(data);
-						this.render();
-				});
-				
+			template:_.template(
+				`<%_.each(content,function(_c,_i){ %>
+					<div class='row center-xs animated fadeIn'>
+						<div class="col-xs-11  start-xs" >
+							<strong><%=_i%></strong>
+							<p ><%=_c%></p>	
+						</div>
+					</div>
+					<div class="divider"><div/>	
+				<%})%>`),
+			preLoadTemplate:_.template(`<div class="loading loading-lg"></div>`),
+			initialize:function(options){
+				this.$el.html(this.preLoadTemplate());
+				this.listenTo(this.model, "change", this.render);
+				this.model.run(options.libro);	
 			},
-			render:function(){
-				this.$el.html( this.template() );
+			render:function(){				  
+				_.delay(()=>{
+					this.$el.html( this.template({content:this.model.get("1")}) );	
+				},1000);
+				
 			}
 		});
 
@@ -65,7 +72,7 @@ function(libros,Backbone,_,$){
 				</div>
 				<div class="divider" ></div>
 				<div class="row center-xs" >
-					<div class="col-xs-11" id="content" ></div>
+					<div class="col-xs-12" id="content" ></div>
 				</div>
 			</div>`),
 			events: {
@@ -111,7 +118,7 @@ function(libros,Backbone,_,$){
 					 	this.init_check = true;
 				 	};
 				 	
-			 		new vContent({model:new mContent({libro:libro})});
+			 		new vContent({libro:libro,capitulo:1,model:new mContent()});
 				 	
 				 };
 			},
@@ -120,8 +127,7 @@ function(libros,Backbone,_,$){
 			}
 		});
 
-		
-
+	
 	return {
 		libros:libros,
 		AppRouter:AppRouter

@@ -24,13 +24,12 @@
     "animate.css": "^3.7.2",
     "backbone": "^1.4.0",
     "flexboxgrid": "^6.3.1",
-    "mithril": "^2.0.4",
+    "jquery": "^3.4.1",
     "requirejs": "^2.3.6",
     "requirejs-plugins": "^1.0.2",
     "requirejs-text": "^2.0.15",
     "spectre.css": "^0.5.8",
     "underscore": "^1.9.1",
-    "voca": "^1.4.0",
-    "zepto": "^1.2.0"
+    "voca": "^1.4.0"
   }
 }

@@ -37,12 +37,19 @@ function(libros,Backbone,_,$){
 					<%}%>`),
 			initialize:function(options){
 				
+				this.libro = options.libro;
 				this.max_cap = options.max_cap;
 				this.capitulo = options.capitulo;
 				this.$el.html(this.preLoadTemplate());
 				this.listenTo(this.model, "change", this.render);
-				this.model.run(options.libro);
+				this.model.run(this.libro);
 
+			},
+			changeCapitulo:function(capitulo){
+				this.capitulo = capitulo;
+				this.$el.html(this.preLoadTemplate());
+				this.render();
+				//alert("render change capitulo");
 			},
 			render:function(){
 				console.log();
@@ -96,7 +103,6 @@ function(libros,Backbone,_,$){
 					Backbone.history.navigate("#/"+this.libro+"/1",{trigger:true});
 			},
 			changeCapitulo:function(event){
-					console.log(this.libro);
 					const capitulo = event.target.value;
 					Backbone.history.navigate("#/"+this.libro+"/"+capitulo,{trigger:true});
 			},
@@ -108,6 +114,8 @@ function(libros,Backbone,_,$){
 
 		var AppRouter = Backbone.Router.extend({
 			initialize:function(){
+
+				this.vContent = null;
 				this.init_check = false;
 				
 				/* se establece libros_url para verificación del 
@@ -145,8 +153,18 @@ function(libros,Backbone,_,$){
 				 				return l.val == libro;	
 				 	}))["cap"] 
 				 	
-			 		new vContent({libro:libro,capitulo:capitulo,max_cap:max_cap,model:new mContent()});
-				 	
+				
+				    if(_.isNull(this.vContent)){			
+			 			this.vContent = new vContent({libro:libro,capitulo:capitulo,max_cap:max_cap,model:new mContent()});
+				 	}else{
+				 		if( libro != this.vContent.libro  ){
+				 			this.vContent = new vContent({libro:libro,capitulo:capitulo,max_cap:max_cap,model:new mContent()});
+				 		}else{
+				 			this.vContent.changeCapitulo(capitulo);
+				 		};
+				 		
+				 	};
+
 				 };
 			},
 			noFound:function(){

@@ -1,5 +1,5 @@
 define(
-['json!libros.json','backbone','underscore','jquery'],
+['json!libros2.0.json','backbone','underscore','jquery'],
 function(libros,Backbone,_,$){
 
 
@@ -32,13 +32,15 @@ function(libros,Backbone,_,$){
 				<%})%>`),
 			preLoadTemplate:_.template(`<div class="loading loading-lg"></div>`),
 			initialize:function(options){
+				console.log(options);
+				this.capitulo = options.capitulo;
 				this.$el.html(this.preLoadTemplate());
 				this.listenTo(this.model, "change", this.render);
 				this.model.run(options.libro);	
 			},
 			render:function(){				  
 				_.delay(()=>{
-					this.$el.html( this.template({content:this.model.get("1")}) );	
+					this.$el.html( this.template({content:this.model.get(this.capitulo)}) );	
 				},1000);
 				
 			}
@@ -59,15 +61,11 @@ function(libros,Backbone,_,$){
 								<%})%>
 							</select>
 						</div>
-						<!--
 						<div class="form-group"  >
-							<select id="libros" class="form-select" >
-								<%_.each(libros,function(l){%>
-									<option value="<%=l.val%>" ><%=l.text%></option>
-								<%})%>
+							<select id="capitulos" disabled class="form-select" >
+								<option value="null" ></option>
 							</select>
 						</div>
-						-->
 					</div>
 				</div>
 				<div class="divider" ></div>
@@ -77,14 +75,21 @@ function(libros,Backbone,_,$){
 			</div>`),
 			events: {
 			"change #libros": "changeLibro",
+			"change #capitulos":"changeCapitulo"
 			},
 			initialize: function() {
+				this.libro = null;
 				//this.listenTo(this.model, "change", this.render);
 				this.render();
 			},
 			changeLibro:function(event){
-					const libro = event.target.value;
-					Backbone.history.navigate("#/"+libro+"/1",{trigger:true});
+					this.libro = event.target.value;
+					Backbone.history.navigate("#/"+this.libro+"/1",{trigger:true});
+			},
+			changeCapitulo:function(event){
+					console.log(this.libro);
+					const capitulo = event.target.value;
+					Backbone.history.navigate("#/"+this.libro+"/"+capitulo,{trigger:true});
 			},
 			render: function() {	
 				 this.$el.html(this.template(this.model.attributes));
@@ -95,9 +100,14 @@ function(libros,Backbone,_,$){
 		var AppRouter = Backbone.Router.extend({
 			initialize:function(){
 				this.init_check = false;
+				
+				/* se establece libros_url para verificación del 
+				listado de urls*/
 				this.libros_url = _.map(nBook.get("libros"),(l)=>{
 					return l.val;
 				});
+				// Se inicia la vista main 
+				// es independiente del estado de la url
 				new Main({model:nBook});
 			},
 			routes: {
@@ -112,13 +122,33 @@ function(libros,Backbone,_,$){
 				 }else{
 				 	if( !this.init_check ){ 
 					 	$("#libros option").each(function(){
-					 		$(this).val() == libro && ( $(this).attr("selected",true) ); 
-					 		
+					 		if($(this).val() == libro){ 
+					 			$(this).attr("selected",true)
+					 			
+					 			const max_cap = 
+					 			_.first(_.filter(nBook.get('libros'),(l)=>{
+					 				return l.val == libro;	
+					 			}))["cap"] 
+					 			const template_max_cap = _.template("<%for(var i=1;i<=max_cap;i++){%><option value='<%=i%>' ><%=i%></option><%}%>")({max_cap:max_cap});
+					 			$("#capitulos").html(template_max_cap);
+					 			$("#capitulos").removeAttr("disabled");		
+					 		};
+
 					 	});
 					 	this.init_check = true;
+				 	}else{
+				 		const max_cap = 
+					 			_.first(_.filter(nBook.get('libros'),(l)=>{
+					 				return l.val == libro;	
+					 			}))["cap"] 
+					 	const template_max_cap = _.template("<%for(var i=1;i<=max_cap;i++){%><option value='<%=i%>' ><%=i%></option><%}%>")({max_cap:max_cap}); 		
+					 	$("#capitulos").html(template_max_cap);
+					 	//$("#capitulos").removeAttr("disabled");
+		
+
 				 	};
 				 	
-			 		new vContent({libro:libro,capitulo:1,model:new mContent()});
+			 		new vContent({libro:libro,capitulo:capitulo,model:new mContent()});
 				 	
 				 };
 			},

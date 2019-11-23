@@ -1,0 +1,332 @@
+[
+ {
+  "val": "genesis",
+  "text": "Génesis",
+  "cap": 50
+ },
+ {
+  "val": "exodo",
+  "text": "Éxodo",
+  "cap": 40
+ },
+ {
+  "val": "levitico",
+  "text": "Levítico",
+  "cap": 27
+ },
+ {
+  "val": "numeros",
+  "text": "Números",
+  "cap": 36
+ },
+ {
+  "val": "deuteronomio",
+  "text": "Deuteronomio",
+  "cap": 34
+ },
+ {
+  "val": "josue",
+  "text": "Josué",
+  "cap": 24
+ },
+ {
+  "val": "jueces",
+  "text": "Jueces",
+  "cap": 21
+ },
+ {
+  "val": "rut",
+  "text": "Rut",
+  "cap": 4
+ },
+ {
+  "val": "1samuel",
+  "text": "1 Samuel",
+  "cap": 31
+ },
+ {
+  "val": "2samuel",
+  "text": "2 Samuel",
+  "cap": 24
+ },
+ {
+  "val": "1reyes",
+  "text": "1 Reyes",
+  "cap": 22
+ },
+ {
+  "val": "2reyes",
+  "text": "2 Reyes",
+  "cap": 25
+ },
+ {
+  "val": "1cronicas",
+  "text": "1 Crónicas",
+  "cap": 29
+ },
+ {
+  "val": "2cronicas",
+  "text": "2 Crónicas",
+  "cap": 36
+ },
+ {
+  "val": "esdras",
+  "text": "Esdras",
+  "cap": 10
+ },
+ {
+  "val": "nehemias",
+  "text": "Nehemías",
+  "cap": 13
+ },
+ {
+  "val": "ester",
+  "text": "Ester",
+  "cap": 10
+ },
+ {
+  "val": "job",
+  "text": "Job",
+  "cap": 42
+ },
+ {
+  "val": "salmos",
+  "text": "Salmos",
+  "cap": 150
+ },
+ {
+  "val": "proverbios",
+  "text": "Proverbios",
+  "cap": 31
+ },
+ {
+  "val": "eclesiastes",
+  "text": "Eclesiastés",
+  "cap": 12
+ },
+ {
+  "val": "cantares",
+  "text": "Cantares",
+  "cap": 8
+ },
+ {
+  "val": "isaias",
+  "text": "Isaías",
+  "cap": 66
+ },
+ {
+  "val": "jeremias",
+  "text": "Jeremías",
+  "cap": 52
+ },
+ {
+  "val": "lamentaciones",
+  "text": "Lamentaciones",
+  "cap": 5
+ },
+ {
+  "val": "ezequiel",
+  "text": "Ezequiel",
+  "cap": 48
+ },
+ {
+  "val": "daniel",
+  "text": "Daniel",
+  "cap": 12
+ },
+ {
+  "val": "oseas",
+  "text": "Oseas",
+  "cap": 14
+ },
+ {
+  "val": "joel",
+  "text": "Joel",
+  "cap": 3
+ },
+ {
+  "val": "amos",
+  "text": "Amós",
+  "cap": 9
+ },
+ {
+  "val": "abdias",
+  "text": "Abdías",
+  "cap": 1
+ },
+ {
+  "val": "jonas",
+  "text": "Jonás",
+  "cap": 4
+ },
+ {
+  "val": "miqueas",
+  "text": "Miqueas",
+  "cap": 7
+ },
+ {
+  "val": "nahum",
+  "text": "Nahum",
+  "cap": 3
+ },
+ {
+  "val": "habacuc",
+  "text": "Habacuc",
+  "cap": 3
+ },
+ {
+  "val": "sofonias",
+  "text": "Sofonías",
+  "cap": 3
+ },
+ {
+  "val": "hageo",
+  "text": "Hageo",
+  "cap": 2
+ },
+ {
+  "val": "zacarias",
+  "text": "Zacarías",
+  "cap": 14
+ },
+ {
+  "val": "malaquias",
+  "text": "Malaquías",
+  "cap": 4
+ },
+ {
+  "val": "mateo",
+  "text": "Mateo",
+  "cap": 28
+ },
+ {
+  "val": "marcos",
+  "text": "Marcos",
+  "cap": 16
+ },
+ {
+  "val": "lucas",
+  "text": "Lucas",
+  "cap": 24
+ },
+ {
+  "val": "juan",
+  "text": "Juan",
+  "cap": 21
+ },
+ {
+  "val": "hechos",
+  "text": "Hechos",
+  "cap": 28
+ },
+ {
+  "val": "romanos",
+  "text": "Romanos",
+  "cap": 16
+ },
+ {
+  "val": "1corintios",
+  "text": "1 Corintios",
+  "cap": 16
+ },
+ {
+  "val": "2corintios",
+  "text": "2 Corintios",
+  "cap": 13
+ },
+ {
+  "val": "galatas",
+  "text": "Gálatas",
+  "cap": 6
+ },
+ {
+  "val": "efesios",
+  "text": "Efesios",
+  "cap": 6
+ },
+ {
+  "val": "filipenses",
+  "text": "Filipenses",
+  "cap": 4
+ },
+ {
+  "val": "colosenses",
+  "text": "Colosenses",
+  "cap": 4
+ },
+ {
+  "val": "1tesalonicenses",
+  "text": "1 Tesalonicenses",
+  "cap": 5
+ },
+ {
+  "val": "2tesalonicenses",
+  "text": "2 Tesalonicenses",
+  "cap": 3
+ },
+ {
+  "val": "1timoteo",
+  "text": "1 Timoteo",
+  "cap": 6
+ },
+ {
+  "val": "2timoteo",
+  "text": "2 Timoteo",
+  "cap": 4
+ },
+ {
+  "val": "tito",
+  "text": "Tito",
+  "cap": 3
+ },
+ {
+  "val": "filemon",
+  "text": "Filemón",
+  "cap": 1
+ },
+ {
+  "val": "hebreos",
+  "text": "Hebreos",
+  "cap": 13
+ },
+ {
+  "val": "santiago",
+  "text": "Santiago",
+  "cap": 5
+ },
+ {
+  "val": "1pedro",
+  "text": "1 Pedro",
+  "cap": 5
+ },
+ {
+  "val": "2pedro",
+  "text": "2 Pedro",
+  "cap": 3
+ },
+ {
+  "val": "1juan",
+  "text": "1 Juan",
+  "cap": 5
+ },
+ {
+  "val": "2juan",
+  "text": "2 Juan",
+  "cap": 1
+ },
+ {
+  "val": "3juan",
+  "text": "3 Juan",
+  "cap": 1
+ },
+ {
+  "val": "judas",
+  "text": "Judas",
+  "cap": 1
+ },
+ {
+  "val": "apocalipsis",
+  "text": "Apocalipsis",
+  "cap": 22
+ }
+]

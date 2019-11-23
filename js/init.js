@@ -31,17 +31,26 @@ function(libros,Backbone,_,$){
 					<div class="divider"><div/>	
 				<%})%>`),
 			preLoadTemplate:_.template(`<div class="loading loading-lg"></div>`),
+			templateCapitulos:_.template(`
+					<%for(var i=1;i<=max_cap;i++){%>
+						<option value="<%=i%>" <%if(parseInt(i) == parseInt(capitulo)){%> selected <%}%> value='<%=i%>' ><%=i%></option>
+					<%}%>`),
 			initialize:function(options){
-				console.log(options);
+				
+				this.max_cap = options.max_cap;
 				this.capitulo = options.capitulo;
 				this.$el.html(this.preLoadTemplate());
 				this.listenTo(this.model, "change", this.render);
-				this.model.run(options.libro);	
+				this.model.run(options.libro);
+
 			},
-			render:function(){				  
+			render:function(){
+				console.log();
 				_.delay(()=>{
-					this.$el.html( this.template({content:this.model.get(this.capitulo)}) );	
-				},1000);
+					this.$el.html( this.template({content:this.model.get(this.capitulo)}) );
+					this.$el.parent().parent().find("#capitulos").html(this.templateCapitulos({max_cap:this.max_cap,capitulo:this.capitulo}))
+					this.$el.parent().parent().find("#capitulos").removeAttr("disabled");
+				},500);
 				
 			}
 		});
@@ -115,6 +124,7 @@ function(libros,Backbone,_,$){
 			'*noFound':'noFound'
 			},
 			index:function(libro,capitulo){
+				
 				 if(  _.indexOf(this.libros_url,libro ) == -1 ){
 				 		// O ver la forma de back url
 				 		this.navigate("#/genesis/1",{trigger:true});
@@ -124,31 +134,18 @@ function(libros,Backbone,_,$){
 					 	$("#libros option").each(function(){
 					 		if($(this).val() == libro){ 
 					 			$(this).attr("selected",true)
-					 			
-					 			const max_cap = 
-					 			_.first(_.filter(nBook.get('libros'),(l)=>{
-					 				return l.val == libro;	
-					 			}))["cap"] 
-					 			const template_max_cap = _.template("<%for(var i=1;i<=max_cap;i++){%><option value='<%=i%>' ><%=i%></option><%}%>")({max_cap:max_cap});
-					 			$("#capitulos").html(template_max_cap);
-					 			$("#capitulos").removeAttr("disabled");		
 					 		};
-
 					 	});
 					 	this.init_check = true;
-				 	}else{
-				 		const max_cap = 
-					 			_.first(_.filter(nBook.get('libros'),(l)=>{
-					 				return l.val == libro;	
-					 			}))["cap"] 
-					 	const template_max_cap = _.template("<%for(var i=1;i<=max_cap;i++){%><option value='<%=i%>' ><%=i%></option><%}%>")({max_cap:max_cap}); 		
-					 	$("#capitulos").html(template_max_cap);
-					 	//$("#capitulos").removeAttr("disabled");
-		
-
+					 
 				 	};
+
+			 		const max_cap = 
+				 			_.first(_.filter(nBook.get('libros'),(l)=>{
+				 				return l.val == libro;	
+				 	}))["cap"] 
 				 	
-			 		new vContent({libro:libro,capitulo:capitulo,model:new mContent()});
+			 		new vContent({libro:libro,capitulo:capitulo,max_cap:max_cap,model:new mContent()});
 				 	
 				 };
 			},

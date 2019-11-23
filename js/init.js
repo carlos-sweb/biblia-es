@@ -1,7 +1,6 @@
 define(
-['json!libros2.0.json','backbone','underscore','jquery'],
-function(libros,Backbone,_,$){
-
+['json!libros2.0.json','backbone','underscore','jquery','router','viewMain'],
+function(libros,Backbone,_,$,router,viewMain){
 
 		var Book = Backbone.Model.extend({
 			 defaults:{
@@ -63,56 +62,9 @@ function(libros,Backbone,_,$){
 		});
 
 
-		var Main = Backbone.View.extend({
-			el:"#main",
-			template:_.template(
-			`<div class='col-xs-12 animated fadeIn' >
-				<div class="divider" ></div>				
-				<div class="row center-xs">
-					<div class="col-xs-11" >
-						<div class="form-group"  >
-							<select id="libros" class="form-select" >
-								<%_.each(libros,function(l){%>
-									<option value="<%=l.val%>" ><%=l.text%></option>
-								<%})%>
-							</select>
-						</div>
-						<div class="form-group"  >
-							<select id="capitulos" disabled class="form-select" >
-								<option value="null" ></option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="divider" ></div>
-				<div class="row center-xs" >
-					<div class="col-xs-12" id="content" ></div>
-				</div>
-			</div>`),
-			events: {
-			"change #libros": "changeLibro",
-			"change #capitulos":"changeCapitulo"
-			},
-			initialize: function() {
-				this.libro = null;
-				//this.listenTo(this.model, "change", this.render);
-				this.render();
-			},
-			changeLibro:function(event){
-					this.libro = event.target.value;
-					Backbone.history.navigate("#/"+this.libro+"/1",{trigger:true});
-			},
-			changeCapitulo:function(event){
-					const capitulo = event.target.value;
-					Backbone.history.navigate("#/"+this.libro+"/"+capitulo,{trigger:true});
-			},
-			render: function() {	
-				 this.$el.html(this.template(this.model.attributes));
-			}
-		});
-			
+		
 
-		var AppRouter = Backbone.Router.extend({
+		var AppRouter = Backbone.Router.extend(_.extend(router,{
 			initialize:function(){
 
 				this.vContent = null;
@@ -125,19 +77,25 @@ function(libros,Backbone,_,$){
 				});
 				// Se inicia la vista main 
 				// es independiente del estado de la url
-				new Main({model:nBook});
+				this.vMain = new viewMain({model:nBook});
 			},
 			routes: {
 			':libro/:capitulo': 'index',
 			'*noFound':'noFound'
 			},
 			index:function(libro,capitulo){
-				
+						
+
 				 if(  _.indexOf(this.libros_url,libro ) == -1 ){
+				 		this.vMain.libro = "genesis";
+				 		if(_.isNull(this.vMain.libro)){this.vMain.libro="genesis"};
 				 		// O ver la forma de back url
 				 		this.navigate("#/genesis/1",{trigger:true});
 				 		$("#libros option[value=genesis]").attr("selected",true);
 				 }else{
+				 	
+				 	this.vMain.libro = libro;
+
 				 	if( !this.init_check ){ 
 					 	$("#libros option").each(function(){
 					 		if($(this).val() == libro){ 
@@ -166,15 +124,11 @@ function(libros,Backbone,_,$){
 				 	};
 
 				 };
-			},
-			noFound:function(){
-				this.navigate("#/genesis/1",{trigger:true});
 			}
-		});
+		}));
 
 	
 	return {
-		libros:libros,
 		AppRouter:AppRouter
 	};
 	

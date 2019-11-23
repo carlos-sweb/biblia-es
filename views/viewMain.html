@@ -1,0 +1,22 @@
+<div class='col-xs-12 animated fadeIn' >
+				<div class="divider" ></div>				
+				<div class="row center-xs">
+					<div class="col-xs-11" >
+						<div class="form-group"  >
+							<select id="libros" class="form-select" >
+								<%_.each(libros,function(l){%>
+									<option value="<%=l.val%>" ><%=l.text%></option>
+								<%})%>
+							</select>
+						</div>
+						<div class="form-group"  >
+							<select id="capitulos" disabled class="form-select" >
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="divider" ></div>
+				<div class="row center-xs" >
+					<div class="col-xs-12" id="content" ></div>
+				</div>
+</div>

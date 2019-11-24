@@ -21,6 +21,7 @@
   "homepage": "https://github.com/carlos-sweb/biblia-es#readme",
   "dependencies": {
     "@material/elevation": "^4.0.0",
+    "@material/top-app-bar": "^4.0.0",
     "animate.css": "^3.7.2",
     "backbone": "^1.4.0",
     "flexboxgrid": "^6.3.1",

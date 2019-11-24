@@ -1,2 +1,2 @@
 # biblia-es
-[https://biblia-es.netlify.com](Version online)
+[Ver biblia online](https://biblia-es.netlify.com)

@@ -11,6 +11,8 @@ require.config({
     init:"js/init",
     router:"js/router",
     viewMain:"js/views/main",
+    librosModel:"js/models/libros",
+    mContent:"js/models/content",
     backbone:"node_modules/backbone/backbone-min"
   },
   shim:{
@@ -25,10 +27,16 @@ require.config({
           deps:["jquery","underscore"]
   	   },
        init:{
-         deps:['backbone','router']
+         deps:['backbone','router','viewMain','librosModel','mContent']
        },
        viewMain:{
         deps:['backbone']
+       },
+       librosModel:{
+       	 deps:['backbone']
+       },
+       mContent:{
+       	deps:['backbone']
        }
   }
 });

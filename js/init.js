@@ -1,21 +1,24 @@
 define(
-['json!libros2.0.json','backbone','underscore','jquery','router','viewMain'],
-function(libros,Backbone,_,$,router,viewMain){
+['json!libros2.0.json',
+ 'backbone',
+ 'underscore',
+ 'jquery',
+ 'router',
+ 'viewMain',
+ 'librosModel',
+ 'mContent'],
+function(
+libros,
+Backbone,
+_,
+$,
+router,
+viewMain,
+librosModel,
+mContent){
 
-		var Book = Backbone.Model.extend({
-			 defaults:{
-			 	libros:libros
-			 }
-		});
 
-		var nBook = new Book();
-
-		var mContent = Backbone.Model.extend({
-			run:function(libro){
-				this.url = "json/"+libro+".json";
-				this.fetch();	
-			}
-		});
+		
 
 		var vContent = Backbone.View.extend({
 			el:"#content",
@@ -35,10 +38,9 @@ function(libros,Backbone,_,$,router,viewMain){
 						<option value="<%=i%>" <%if(parseInt(i) == parseInt(capitulo)){%> selected <%}%> value='<%=i%>' ><%=i%></option>
 					<%}%>`),
 			initialize:function(options){
+				const opt = _.pick(options,["libro","capitulo","max_cap"]);
+			 _.extend(this,opt)
 				
-				this.libro = options.libro;
-				this.max_cap = options.max_cap;
-				this.capitulo = options.capitulo;
 				this.$el.html(this.preLoadTemplate());
 				this.listenTo(this.model, "change", this.render);
 				this.model.run(this.libro);
@@ -51,7 +53,6 @@ function(libros,Backbone,_,$,router,viewMain){
 				//alert("render change capitulo");
 			},
 			render:function(){
-				console.log();
 				_.delay(()=>{
 					this.$el.html( this.template({content:this.model.get(this.capitulo)}) );
 					this.$el.parent().parent().find("#capitulos").html(this.templateCapitulos({max_cap:this.max_cap,capitulo:this.capitulo}))
@@ -72,12 +73,10 @@ function(libros,Backbone,_,$,router,viewMain){
 				
 				/* se establece libros_url para verificación del 
 				listado de urls*/
-				this.libros_url = _.map(nBook.get("libros"),(l)=>{
-					return l.val;
-				});
+				this.libros_url = librosModel.getUrlList()
 				// Se inicia la vista main 
 				// es independiente del estado de la url
-				this.vMain = new viewMain({model:nBook});
+				this.vMain = new viewMain({model:librosModel});
 			},
 			routes: {
 			':libro/:capitulo': 'index',
@@ -107,7 +106,7 @@ function(libros,Backbone,_,$,router,viewMain){
 				 	};
 
 			 		const max_cap = 
-				 			_.first(_.filter(nBook.get('libros'),(l)=>{
+				 			_.first(_.filter(librosModel.get('libros'),(l)=>{
 				 				return l.val == libro;	
 				 	}))["cap"] 
 				 	

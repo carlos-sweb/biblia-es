@@ -1,4 +1,12 @@
-define(["backbone","text!views/viewmain.html"],function(Backbone,viewMain){
+define([
+"backbone",
+"text!views/viewmain.html",
+"mdcdrawer","mdclist"
+],function(
+Backbone,
+viewMain,
+mdcdrawer,mdclist){
+	
 	var Main = Backbone.View.extend({
 			el:"#main",
 			template:_.template(viewMain),
@@ -9,7 +17,6 @@ define(["backbone","text!views/viewmain.html"],function(Backbone,viewMain){
 			initialize: function() {
 				
 				this.libro = "genesis";
-
 				//this.listenTo(this.model, "change", this.render);
 				this.render();
 			},
@@ -23,6 +30,15 @@ define(["backbone","text!views/viewmain.html"],function(Backbone,viewMain){
 			},
 			render: function() {	
 				 this.$el.html(this.template(this.model.attributes));
+				 const drawer = mdcdrawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+			  setTimeout(()=>{
+			  	drawer.open =true;
+			  },3000);
+			  const list = mdclist.MDCList.attachTo(document.querySelector('.mdc-list'));
+     list.wrapFocus = true;
+			  
+			  
+			
 			}
 		});
 

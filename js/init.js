@@ -17,9 +17,6 @@ viewMain,
 librosModel,
 mContent){
 
-
-		
-
 		var vContent = Backbone.View.extend({
 			el:"#content",
 			template:_.template(

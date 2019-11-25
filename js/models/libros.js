@@ -6,6 +6,11 @@ function(Backbone,libros){
 			 	  return _.map(this.get("libros"),(l)=>{
 			 	  	  return l.val;
 			 	  })
+			 },
+			 max_cap:function(libro){
+			 	return  _.first(_.filter(this.get('libros'),(l)=>{
+				 				return l.val == libro;	
+				 	}))["cap"] 
 			 }
 		});
 	

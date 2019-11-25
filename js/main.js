@@ -11,11 +11,13 @@ require.config({
     init:"js/init",
     router:"js/router",
     viewMain:"js/views/main",
+    viewContent:"js/views/content",
     librosModel:"js/models/libros",
     mContent:"js/models/content",
     backbone:"node_modules/backbone/backbone-min",
     mdcdrawer:"node_modules/@material/drawer/dist/mdc.drawer.min",
-    mdclist:"node_modules/@material/list/dist/mdc.list.min"
+    mdclist:"node_modules/@material/list/dist/mdc.list.min",
+    mdctopappbar:"node_modules/@material/top-app-bar/dist/mdc.topAppBar.min"
   },
   shim:{
   	  mdcdrawer:{
@@ -36,13 +38,19 @@ require.config({
          	'backbone',
          	'router',
          	'viewMain',
+          'viewContent',
          	'librosModel',
-         	'mContent',
-        	 'mdcdrawer',
-        	 'mdclist'
+         	'mContent'
         	 ]
        },
        viewMain:{
+        deps:[
+          'backbone',
+          'mdcdrawer',
+          'mdclist',
+          'mdctopappbar']
+       },
+       viewContent:{
         deps:['backbone']
        },
        librosModel:{

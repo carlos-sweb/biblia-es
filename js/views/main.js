@@ -1,21 +1,31 @@
 define([
 "backbone",
 "text!views/viewmain.html",
-"mdcdrawer","mdclist"
+"mdcdrawer","mdclist","mdctopappbar"
 ],function(
 Backbone,
 viewMain,
-mdcdrawer,mdclist){
+mdcdrawer,mdclist,mdctopappbar){
 	
-	var Main = Backbone.View.extend({
+	/** @constant
+		@type {object}
+		@default
+	*/
+	const events = {
+		"change #libros"  : "changeLibro",
+		"change #capitulos":"changeCapitulo",
+		"click .mdc-top-app-bar__navigation-icon":"changeDrawer"
+	};
+
+	const View = {
+			/**@var
+			@type {String}  element html
+			*/
 			el:"#main",
 			template:_.template(viewMain),
-			events: {
-			"change #libros": "changeLibro",
-			"change #capitulos":"changeCapitulo"
-			},
-			initialize: function() {
-				
+			events:events, 
+			initialize: function(){
+				this.drawer = null;
 				this.libro = "genesis";
 				//this.listenTo(this.model, "change", this.render);
 				this.render();
@@ -28,19 +38,22 @@ mdcdrawer,mdclist){
 					const capitulo = event.target.value;
 					Backbone.history.navigate("#/"+this.libro+"/"+capitulo,{trigger:true});
 			},
-			render: function() {	
-				 this.$el.html(this.template(this.model.attributes));
-				 const drawer = mdcdrawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
-			  setTimeout(()=>{
-			  	drawer.open =true;
-			  },3000);
-			  const list = mdclist.MDCList.attachTo(document.querySelector('.mdc-list'));
-     list.wrapFocus = true;
-			  
-			  
-			
-			}
-		});
+			changeDrawer:function(){
+				if(!_.isNull(this.drawer)){
+					this.drawer.open = !this.drawer.open;
+				};
+			},
+			render: function() {
 
-	return Main;
+				 this.$el.html(this.template(this.model.attributes));
+				 if( !_.isNull(this.$el.find(".mdc-drawer")) ){ 
+				 	this.drawer = mdcdrawer.MDCDrawer.attachTo(this.$el.find(".mdc-drawer")[0]);
+				 };
+				 
+			 		
+			}
+		};
+
+		var Main = Backbone.View.extend(View);
+		return Main;
 });

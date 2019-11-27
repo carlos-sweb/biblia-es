@@ -4,13 +4,14 @@ define(['backbone'],function(Backbone){
 			el:"#content",
 			template:_.template(
 				`<%_.each(content,function(_c,_i){ %>
+					<%if(_i ==1){%><div class="divider"><div/><%}%>
 					<div class='row center-xs animated fadeIn'>
 						<div class="col-xs-11  start-xs" >
 							<strong><%=_i%></strong>
 							<p ><%=_c%></p>	
 						</div>
 					</div>
-					<div class="divider"><div/>	
+					<%if(_.keys(content).length != _i){%><div class="divider"><div/><%}%>	
 				<%})%>`),
 			preLoadTemplate:_.template(`<div class="loading loading-lg"></div>`),
 			templateCapitulos:_.template(`

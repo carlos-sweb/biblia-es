@@ -14,7 +14,8 @@ mdcdrawer,mdclist,mdctopappbar){
 	const events = {
 		"change #libros"  : "changeLibro",
 		"change #capitulos":"changeCapitulo",
-		"click .mdc-top-app-bar__navigation-icon":"changeDrawer"
+		"click .mdc-top-app-bar__navigation-icon":"changeDrawer",
+		"click .mdc-list-item":"changeDrawer"
 	};
 
 	const View = {

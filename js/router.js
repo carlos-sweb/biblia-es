@@ -2,11 +2,12 @@ define(function(){
 	
 	return {
 		routes: {
-			':libro/:capitulo': 'index',
+			'biblia/:libro/:capitulo': 'index',
+			'settings':'settings',
 			'*noFound':'noFound'
 		},
 		noFound:function(){
-				this.navigate("#/genesis/1",{trigger:true});
+				this.navigate("#/biblia/genesis/1",{trigger:true});
 		}
 	};
 

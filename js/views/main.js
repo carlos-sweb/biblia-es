@@ -33,11 +33,11 @@ mdcdrawer,mdclist,mdctopappbar){
 			},
 			changeLibro:function(event){  				
 					this.libro =  _.clone(event.currentTarget.value); 
-					Backbone.history.navigate("#/"+this.libro+"/1",{trigger:true});
+					Backbone.history.navigate("#/biblia/"+this.libro+"/1",{trigger:true});
 			},
 			changeCapitulo:function(event){
 					const capitulo = event.target.value;
-					Backbone.history.navigate("#/"+this.libro+"/"+capitulo,{trigger:true});
+					Backbone.history.navigate("#/biblia/"+this.libro+"/"+capitulo,{trigger:true});
 			},
 			changeDrawer:function(){
 				if(!_.isNull(this.drawer)){
@@ -48,7 +48,7 @@ mdcdrawer,mdclist,mdctopappbar){
 
 				 this.$el.html(this.template(this.model.attributes));
 				 if( !_.isNull(this.$el.find(".mdc-drawer")) ){ 
-				 	this.drawer = mdcdrawer.MDCDrawer.attachTo(this.$el.find(".mdc-drawer")[0]);
+					 	this.drawer = mdcdrawer.MDCDrawer.attachTo(this.$el.find(".mdc-drawer")[0]);
 				 };
 				 
 			 		

@@ -6,6 +6,7 @@ define(
  'router',
  'viewMain',
  'viewContent',
+ 'viewSettings',
  'librosModel',
  'mContent'],
 function(
@@ -16,6 +17,7 @@ $,
 router,
 viewMain,
 viewContent,
+viewSettings,
 librosModel,
 mContent){	
 
@@ -41,7 +43,7 @@ mContent){
 				this.vMain.libro = "genesis";
 				if(_.isNull(this.vMain.libro)){this.vMain.libro="genesis"};
 				// O ver la forma de back url
-				this.navigate("#/genesis/1",{trigger:true});
+				this.navigate("#/biblia/genesis/1",{trigger:true});
 				$("#libros option[value=genesis]").attr("selected",true);
 			},
 			urlSuccess:function(libro,capitulo){
@@ -77,7 +79,10 @@ mContent){
 					capitulo,
 					this.urlSuccess.bind(this),
 					this.urlError.bind(this));
-				}
+			 },
+			 settings:function(){
+			 	   new viewSettings()
+			 }
 				//--
 			}
 		)//_.extend

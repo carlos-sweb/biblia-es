@@ -1,4 +1,5 @@
 require.config({	
+  urlArgs:"bust=" + (new Date()).getTime(),
   baseUrl:"",
   paths:{	
     underscore:"node_modules/underscore/underscore-min",
@@ -12,6 +13,7 @@ require.config({
     router:"js/router",
     viewMain:"js/views/main",
     viewContent:"js/views/content",
+    viewSettings:"js/views/settings",
     librosModel:"js/models/libros",
     mContent:"js/models/content",
     backbone:"node_modules/backbone/backbone-min",
@@ -20,9 +22,6 @@ require.config({
     mdctopappbar:"node_modules/@material/top-app-bar/dist/mdc.topAppBar.min"
   },
   shim:{
-  	  mdcdrawer:{
-  	  	   exports:'MDCdrawer'
-  	  },
   		 jquery:{
   				  	exports:'$'
   		 },

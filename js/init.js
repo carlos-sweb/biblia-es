@@ -7,6 +7,8 @@ define(
  'viewMain',
  'viewContent',
  'viewSettings',
+ 'viewMaps',
+ 'viewFavorite',
  'librosModel',
  'mContent'],
 function(
@@ -18,6 +20,8 @@ router,
 viewMain,
 viewContent,
 viewSettings,
+viewMaps,
+viewFavorite,
 librosModel,
 mContent){	
 
@@ -79,6 +83,12 @@ mContent){
 					capitulo,
 					this.urlSuccess.bind(this),
 					this.urlError.bind(this));
+			 },
+			 favorite:function(){
+			 	  new viewFavorite();
+			 },
+			 maps:function(){
+			 			new viewMaps();
 			 },
 			 settings:function(){
 			 	   new viewSettings()

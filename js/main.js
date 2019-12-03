@@ -10,10 +10,14 @@ require.config({
     voca:"node_modules/voca/index",
     jquery:"node_modules/jquery/dist/jquery.min",
     init:"js/init",
+    
     router:"js/router",
     viewMain:"js/views/main",
     viewContent:"js/views/content",
     viewSettings:"js/views/settings",
+    viewMaps:"js/views/maps",
+    viewFavorite:"js/views/favorite",
+    
     librosModel:"js/models/libros",
     mContent:"js/models/content",
     backbone:"node_modules/backbone/backbone-min",

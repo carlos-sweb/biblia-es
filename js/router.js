@@ -4,6 +4,8 @@ define(function(){
 		routes: {
 			'biblia/:libro/:capitulo': 'index',
 			'settings':'settings',
+			'maps':'maps',
+			'favorite':'favorite',
 			'*noFound':'noFound'
 		},
 		noFound:function(){

@@ -1,5 +1,5 @@
 define([
-"text!views/settings.html",
+"text!views/favorite.html",
 "backbone"],
 function(template,Backbone){
 	  var settings = Backbone.View.extend({

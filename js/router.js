@@ -1,5 +1,4 @@
-define(function(){
-	
+define(function(){	
 	return {
 		routes: {
 			'biblia/:libro/:capitulo': 'index',
@@ -12,5 +11,4 @@ define(function(){
 				this.navigate("#/biblia/genesis/1",{trigger:true});
 		}
 	};
-
-});
+});	

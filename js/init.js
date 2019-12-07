@@ -88,10 +88,10 @@ mContent){
 			 	  new viewFavorite();
 			 },
 			 maps:function(){
-			 			new viewMaps();
+			 	  new viewMaps();
 			 },
 			 settings:function(){
-			 	   new viewSettings()
+			 	  new viewSettings()
 			 }
 				//--
 			}

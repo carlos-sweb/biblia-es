@@ -47,7 +47,8 @@ mdcdrawer,mdclist,mdctopappbar){
 			render: function() {
 
 				 this.$el.html(this.template(this.model.attributes));
-				 if( !_.isNull(this.$el.find(".mdc-drawer")) ){ 
+
+				 if( this.$el.find(".mdc-drawer")[0] ){ 
 					 	this.drawer = mdcdrawer.MDCDrawer.attachTo(this.$el.find(".mdc-drawer")[0]);
 				 };
 				 

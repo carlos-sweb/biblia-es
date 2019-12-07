@@ -1,5 +1,8 @@
-define(['backbone'],function(Backbone){
-
+define([
+	'backbone',
+	'text!views/header/viewMain.html',
+	'librosModel'
+	],function(Backbone,viewHeader,librosModel){
 	var vContent = Backbone.View.extend({
 			el:"#content",
 			template:_.template(
@@ -18,28 +21,34 @@ define(['backbone'],function(Backbone){
 					<%for(var i=1;i<=max_cap;i++){%>
 						<option value="<%=i%>" <%if(parseInt(i) == parseInt(capitulo)){%> selected <%}%> value='<%=i%>' ><%=i%></option>
 					<%}%>`),
+			templateHeader:_.template(viewHeader),
 			initialize:function(options){
+
 				const opt = _.pick(options,["libro","capitulo","max_cap"]);
 			 	_.extend(this,opt)
-				
-				this.$el.html(this.preLoadTemplate());
+				this.$el.find("#content-body").html(this.preLoadTemplate());
 				this.listenTo(this.model, "change", this.render);
 				this.model.run(this.libro);
+
 
 			},
 			changeCapitulo:function(capitulo){
 				this.capitulo = capitulo;
-				this.$el.html(this.preLoadTemplate());
+
+				this.$el.find("#content-body").html(this.preLoadTemplate());
 				this.render();
 				//alert("render change capitulo");
 			},
 			render:function(){
-				_.delay(()=>{
-					this.$el.html( this.template({content:this.model.get(this.capitulo)}) );
-					this.$el.parent().parent().find("#capitulos").html(this.templateCapitulos({max_cap:this.max_cap,capitulo:this.capitulo}))
-					this.$el.parent().parent().find("#capitulos").removeAttr("disabled");
-				},500);
 				
+				_.delay(()=>{
+
+				this.$el.find("#content-header").html(this.templateHeader({libros:librosModel.get("libros")}));
+				this.$el.find("#content-body").html( this.template({content:this.model.get(this.capitulo)}) );
+				this.$el.parent().parent().find("#capitulos").html(this.templateCapitulos({max_cap:this.max_cap,capitulo:this.capitulo}))
+				this.$el.parent().parent().find("#capitulos").removeAttr("disabled");
+					
+				},500);	
 			}
 		});
 

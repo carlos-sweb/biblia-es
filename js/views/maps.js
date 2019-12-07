@@ -11,7 +11,11 @@ function(template,Backbone){
 	  	  },
 	  	  
 	  	  render:function(){
-	  	  	   this.$el.html(this.template())
+
+			this.$el.find("#content-header").html("");
+			this.$el.find("#content-body").html(this.template());
+			this.$el.find("#content-footer").html("");
+			
 	  	  }
 	  	  
 	  });

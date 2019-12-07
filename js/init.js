@@ -59,8 +59,7 @@ mContent){
 				 			$(this).attr("selected",true)
 				 		};
 				 	});
-				 	this.init_check = true;
-				 
+				 	this.init_check = true;	 
 			 	};
 
 		 		const max_cap = librosModel.max_cap(libro); 		 	

@@ -42,14 +42,14 @@ define([
 			render:function(){
 				
 				_.delay(()=>{
-
-				if(!this.$el.find("#content-header").find("#header-libros")[0]){
-					this.$el.find("#content-header").html(this.templateHeader({libros:librosModel.get("libros")}));
-				};
-						
-				this.$el.find("#content-body").html( this.template({content:this.model.get(this.capitulo)}) );
-				this.$el.parent().parent().find("#capitulos").html(this.templateCapitulos({max_cap:this.max_cap,capitulo:this.capitulo}))
-				this.$el.parent().parent().find("#capitulos").removeAttr("disabled");				
+					if(!this.$el.find("#content-header").find("#header-libros")[0]){
+						this.$el.find("#content-header").html(this.templateHeader({libros:librosModel.get("libros")}));
+					    this.$el.find("#libros option[value="+this.libro+"]").attr("selected",true);	
+					};
+							
+					this.$el.find("#content-body").html( this.template({content:this.model.get(this.capitulo)}) );
+					this.$el.parent().parent().find("#capitulos").html(this.templateCapitulos({max_cap:this.max_cap,capitulo:this.capitulo}))
+					this.$el.parent().parent().find("#capitulos").removeAttr("disabled");				
 				},500);	
 			}
 		});

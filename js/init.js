@@ -27,7 +27,9 @@ mContent){
 
 		var AppRouter = Backbone.Router.extend(_.extend(router,{
 			initialize:function(){
+
 				this.viewContent = null;
+				
 				this.init_check = false;
 				/* se establece libros_url para verificación del 
 				listado de urls*/
@@ -35,6 +37,7 @@ mContent){
 				// Se inicia la vista main 
 				// es independiente del estado de la url
 				this.vMain = new viewMain({model:librosModel});
+
 			},
 			checkUrlLibro:function(libro,capitulo,done,reject){
 				 if( _.indexOf(this.libros_url,libro) == -1 ){
@@ -51,17 +54,8 @@ mContent){
 				$("#libros option[value=genesis]").attr("selected",true);
 			},
 			urlSuccess:function(libro,capitulo){
+				// No se para que sirve ??
 				this.vMain.libro = libro;
-
-			 	if( !this.init_check ){ 
-				 	$("#libros option").each(function(){
-				 		if($(this).val() == libro){ 
-				 			$(this).attr("selected",true)
-				 		};
-				 	});
-				 	this.init_check = true;	 
-			 	};
-
 		 		const max_cap = librosModel.max_cap(libro); 		 	
 			
 			    if(_.isNull(this.viewContent)){			
@@ -83,7 +77,7 @@ mContent){
 					this.urlSuccess.bind(this),
 					this.urlError.bind(this));
 			 },
-			 favorite:function(){
+			 favorite:function(){	
 			 	  new viewFavorite();
 			 },
 			 maps:function(){

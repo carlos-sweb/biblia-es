@@ -6,7 +6,7 @@ define([
 Backbone,
 viewMain,
 mdcdrawer,mdclist,mdctopappbar){
-	
+
 	/** @constant
 		@type {object}
 		@default
@@ -50,12 +50,9 @@ mdcdrawer,mdclist,mdctopappbar){
 
 				 if( this.$el.find(".mdc-drawer")[0] ){ 
 					 	this.drawer = mdcdrawer.MDCDrawer.attachTo(this.$el.find(".mdc-drawer")[0]);
-				 };
-				 
-			 		
+				 };	 		
 			}
 		};
-
 		var Main = Backbone.View.extend(View);
 		return Main;
 });

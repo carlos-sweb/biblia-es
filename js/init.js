@@ -38,6 +38,10 @@ mContent){
 				// es independiente del estado de la url
 				this.vMain = new viewMain({model:librosModel});
 
+				Backbone.history.start();
+
+				this.vMain.selectedMenu();
+				
 			},
 			checkUrlLibro:function(libro,capitulo,done,reject){
 				 if( _.indexOf(this.libros_url,libro) == -1 ){

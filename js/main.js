@@ -65,7 +65,4 @@ require.config({
   }
 });
 require(["jquery","backbone","underscore","init"],
-function($,Backbone,_,init){
-    new init.AppRouter();
-    Backbone.history.start();
-});
+function($,Backbone,_,init){new init.AppRouter();});

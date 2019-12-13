@@ -26,10 +26,13 @@ mdcdrawer,mdclist,mdctopappbar){
 			template:_.template(viewMain),
 			events:events, 
 			initialize: function(){
+
 				this.drawer = null;
+				
 				this.libro = "genesis";
 				//this.listenTo(this.model, "change", this.render);
 				this.render();
+
 			},
 			changeLibro:function(event){  				
 					this.libro =  _.clone(event.currentTarget.value); 
@@ -51,6 +54,9 @@ mdcdrawer,mdclist,mdctopappbar){
 				 if( this.$el.find(".mdc-drawer")[0] ){ 
 					 	this.drawer = mdcdrawer.MDCDrawer.attachTo(this.$el.find(".mdc-drawer")[0]);
 				 };	 		
+			},
+			selectedMenu:function(){
+				//alert("aaa");
 			}
 		};
 		var Main = Backbone.View.extend(View);

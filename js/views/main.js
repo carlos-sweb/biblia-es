@@ -56,7 +56,7 @@ mdcdrawer,mdclist,mdctopappbar){
 				 };	 		
 			},
 			selectedMenu:function(){
-				//alert("aaa");
+				alert(Backbone.history.getFragment());
 			}
 		};
 		var Main = Backbone.View.extend(View);

@@ -56,7 +56,16 @@ mdcdrawer,mdclist,mdctopappbar){
 				 };	 		
 			},
 			selectedMenu:function(){
-				alert(Backbone.history.getFragment());
+			  	const fra = Backbone.history.getFragment();
+				 this.$el.find("#drawer .mdc-list .mdc-list-item").each(function(){
+				 	   if( ("#/"+fra) == $(this).attr("href") ){
+				 	   	 $(this).addClass("mdc-list-item--activated")
+				 	   };	 	   
+				 });
+			  
+				
+				
+				
 			}
 		};
 		var Main = Backbone.View.extend(View);

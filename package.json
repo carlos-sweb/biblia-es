@@ -33,6 +33,7 @@
     "requirejs-text": "^2.0.15",
     "spectre.css": "^0.5.8",
     "underscore": "^1.9.1",
-    "voca": "^1.4.0"
+    "voca": "^1.4.0",
+    "zepto": "^1.2.0"
   }
 }

@@ -8,7 +8,7 @@ require.config({
     json:"node_modules/requirejs-plugins/src/json",
 
     voca:"node_modules/voca/index",
-    jquery:"node_modules/zepto/dist/zeoto.min",
+    jquery:"node_modules/zepto/dist/zepto.min",
     init:"js/init",
     
     router:"js/router",
